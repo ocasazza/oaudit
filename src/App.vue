@@ -4,7 +4,7 @@
       <!-- Theme Toggle Button - Fixed Position -->
       <div class="fixed top-6 right-6 z-10">
         <button
-          class="p-3 bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-secondary-200 dark:border-secondary-700 flex items-center justify-center"
+          class="p-3 bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-300 shadow-lg hover:shadow-xl transition-all duration-200 border border-secondary-200 dark:border-secondary-700 flex items-center justify-center"
           @click="toggleTheme"
           :title="`Current: ${currentTheme.label} - Click to cycle themes`"
         >
@@ -23,13 +23,13 @@
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <button
-            class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             @click="incrementCounter"
           >
             Count: {{ count }}
           </button>
           <button
-            class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             @click="resetCounter"
           >
             Reset Counter
@@ -55,8 +55,8 @@ const count = ref(0)
 const themes = [
   { name: 'default', label: 'Light', icon: '☀️', className: '' },
   { name: 'dark-theme', label: 'Dark', icon: '🌙', className: 'dark-theme' },
-  { name: 'disco-theme', label: 'Disco', icon: '🕺', className: 'disco-theme' },
-  { name: 'forest-theme', label: 'Forest', icon: '🌲', className: 'forest-theme' },
+  { name: 'disco-theme', label: 'Disco', icon: '🪩', className: 'disco-theme' },
+  { name: 'forest-theme', label: 'Forest', icon: '🌿', className: 'forest-theme' },
   { name: 'pastel-theme', label: 'Pastel', icon: '🌸', className: 'pastel-theme' }
 ]
 
