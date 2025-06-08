@@ -32,6 +32,10 @@ jobs:
         with:
           name: devenv
 
+      - uses: HatsuneMiku3939/direnv-action@v1
+        with:
+          direnvVersion: 2.32.1
+
       - name: Build project
         run: |
           nix run .#build
