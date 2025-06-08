@@ -5,7 +5,7 @@
       <div class="max-w-2xl mx-auto space-y-6">
         <div class="text-center mb-8">
           <h1 class="text-4xl font-bold text-primary-900 mb-4 transition-colors duration-300">
-            Settings
+            settings
           </h1>
           <p class="text-lg text-secondary-600 transition-colors duration-300">
             Configure your application preferences

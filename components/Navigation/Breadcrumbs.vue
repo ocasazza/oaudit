@@ -41,9 +41,9 @@ const route = useRoute()
 
 // Define route metadata for breadcrumbs
 const routeMetadata = {
-  '/': { title: 'Home', icon: '🏠' },
-  '/about': { title: 'About', icon: 'ℹ️' },
-  '/settings': { title: 'Settings', icon: '⚙️' }
+  '/': { title: 'home', icon: '🏠' },
+  '/about': { title: 'about', icon: 'ℹ️' },
+  '/settings': { title: 'settings', icon: '⚙️' }
 }
 
 const breadcrumbs = computed(() => {
@@ -51,7 +51,7 @@ const breadcrumbs = computed(() => {
 
   // Always start with home
   crumbs.push({
-    title: 'Home',
+    title: 'home',
     path: '/',
     icon: '🏠'
   })
