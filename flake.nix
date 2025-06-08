@@ -47,7 +47,6 @@
           build = {
             type = "app";
             program = "${pkgs.writeShellScript "build" ''
-              npm install --include=dev --quiet
               export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
               npm run build
             ''}";
@@ -56,6 +55,7 @@
           preview = {
             type = "app";
             program = "${pkgs.writeShellScript "preview" ''
+              npm install --include=dev --quiet
               export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
               npm run preview
             ''}";
@@ -64,6 +64,7 @@
           check = {
             type = "app";
             program = "${pkgs.writeShellScript "check" ''
+              npm install --include=dev --quiet
               export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
               echo "🧹 Linting..."
               npm run lint
@@ -76,6 +77,7 @@
           format = {
             type = "app";
             program = "${pkgs.writeShellScript "format" ''
+              npm install --include=dev --quiet
               export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
               echo "💅 Formatting code..."
               npm run format

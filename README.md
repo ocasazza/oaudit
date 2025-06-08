@@ -48,23 +48,28 @@ experimental-features = nix-command flakes
 
 ### Available Commands
 
-The project provides Nix apps for common development tasks:
+Use `nix develop -c` to run commands in the Nix development environment:
 
 ```bash
+# Install npm dependencies
+nix develop -c npm install
+
 # Start development server
-nix run .#dev
+nix develop -c npm run dev
 
 # Build for production
-nix run .#build
+nix develop -c npm run build
 
 # Preview production build
-nix run .#preview
+nix develop -c npm run preview
 
-# Run all quality checks (type-check, lint, format-check)
-nix run .#check
+# Run all quality checks
+nix develop -c npm run lint
+nix develop -c npm run format:check
 
 # Format code with Prettier and fix ESLint issues
-nix run .#format
+nix develop -c npm run format
+nix develop -c npm run lint:fix
 ```
 
 ### Alternative: Direct Tool Access
@@ -83,26 +88,32 @@ nix develop -c prettier --check src
 
 ### Development Workflow
 
-1. **Start development server**
+1. **Install dependencies**
    ```bash
-   nix run .#dev
+   nix develop -c npm install
    ```
 
-2. **Make your changes** in `src/`
-
-3. **Run quality checks**
+2. **Start development server**
    ```bash
-   nix run .#check
+   nix develop -c npm run dev
    ```
 
-4. **Format code**
+3. **Make your changes** in `src/`
+
+4. **Run quality checks**
    ```bash
-   nix run .#format
+   nix develop -c npm run lint
+   nix develop -c npm run format:check
    ```
 
-5. **Build for production**
+5. **Format code**
    ```bash
-   nix run .#build
+   nix develop -c npm run format
+   ```
+
+6. **Build for production**
+   ```bash
+   nix develop -c npm run build
    ```
 
 ## 🏗️ Project Structure
@@ -165,15 +176,15 @@ The project is configured for automatic deployment to GitHub Pages:
 
 The GitHub Actions workflow:
 - Uses Nix for reproducible builds
-- Installs npm dependencies with `nix run .#install`
-- Builds the project with `nix run .#build` (with production base path)
+- Installs npm dependencies with `nix develop -c npm install`
+- Builds the project with `nix develop -c npm run build` (with production base path)
 - Deploys to GitHub Pages
 
 ### Manual Deployment
 
 ```bash
 # Build the project
-nix run .#build
+nix develop -c npm run build
 
 # The built files will be in the `dist/` directory
 # Deploy the contents of `dist/` to your hosting provider
@@ -210,8 +221,8 @@ The `flake.nix` defines:
 1. **Fork the repository**
 2. **Create a feature branch**
 3. **Make your changes**
-4. **Run quality checks**: `nix run .#check`
-5. **Format code**: `nix run .#format`
+4. **Run quality checks**: `nix develop -c npm run lint`
+5. **Format code**: `nix develop -c npm run format`
 6. **Submit a pull request**
 
 ## 📝 License
@@ -247,7 +258,7 @@ direnv status
 rm -rf node_modules/.vite
 
 # Restart development server
-nix run .#dev
+nix develop -c npm run dev
 ```
 
 ## 🔗 Useful Links
