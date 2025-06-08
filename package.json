@@ -1,11 +1,13 @@
 {
   "name": "oudit",
   "version": "0.1.0",
+  "homepage": "https://ocasazza.github.io/oaudit/",
   "type": "module",
   "description": "Vue.js + TypeScript project managed with Nix",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf dist && vite build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint src --ext .vue,.ts,.js",
@@ -17,6 +19,7 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
