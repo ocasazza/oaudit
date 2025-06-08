@@ -1,16 +1,16 @@
 <template>
   <div class="bg-gradient-to-br from-primary-50 to-secondary-100 transition-colors duration-300 min-h-full">
     <div class="container mx-auto px-4 py-8">
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-primary-900 mb-4 transition-colors duration-300">
-          Settings
-        </h1>
-        <p class="text-lg text-secondary-600 transition-colors duration-300">
-          Configure your application preferences
-        </p>
-      </div>
 
       <div class="max-w-2xl mx-auto space-y-6">
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-primary-900 mb-4 transition-colors duration-300">
+            settings
+          </h1>
+          <p class="text-lg text-secondary-600 transition-colors duration-300">
+            Configure your application preferences
+          </p>
+        </div>
         <!-- Theme Settings -->
         <div
           class="bg-secondary-50/80 backdrop-blur-sm p-6 shadow-lg border border-secondary-200 transition-colors duration-300">
@@ -84,8 +84,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import ThemeSelector from '../components/ThemeSelector.vue'
-import ColorPalette from '../components/ColorPalette.vue'
 
 const secretToken = ref('')
 const showToken = ref(false)

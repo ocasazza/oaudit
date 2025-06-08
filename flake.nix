@@ -1,5 +1,5 @@
 {
-  description = "Vue.js + TypeScript project with Nix flake";
+  description = "Nuxt.js + TypeScript project with Nix flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
