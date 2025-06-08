@@ -53,8 +53,8 @@ const navigationRoutes = [
     name: 'home',
     path: '/',
     meta: {
-      title: 'Home',
-      breadcrumb: 'Home',
+      title: 'home',
+      breadcrumb: 'home',
       showInNav: true,
       icon: '🏠',
       order: 1
@@ -64,8 +64,8 @@ const navigationRoutes = [
     name: 'about',
     path: '/about',
     meta: {
-      title: 'About',
-      breadcrumb: 'About',
+      title: 'about',
+      breadcrumb: 'about',
       showInNav: true,
       icon: 'ℹ️',
       order: 2
@@ -75,8 +75,8 @@ const navigationRoutes = [
     name: 'settings',
     path: '/settings',
     meta: {
-      title: 'Settings',
-      breadcrumb: 'Settings',
+      title: 'settings',
+      breadcrumb: 'settings',
       showInNav: true,
       icon: '⚙️',
       order: 3
