@@ -30,20 +30,12 @@
           inherit buildInputs;
 
           shellHook = ''
-            echo "node.js version: $(node --version)"
-            echo "npm version: $(npm --version)"
-            echo ""
-            echo "available commands:"
-            echo "  nix run .#dev      - start development server"
-            echo "  nix run .#build    - build for production"
-            echo "  nix run .#preview  - preview production build"
-            echo "  nix run .#check    - run all quality checks"
-            echo "  nix run .#format   - format code"
-            echo ""
+            npm install --quiet
           '';
         };
 
         apps = {
+
           dev = {
             type = "app";
             program = "${pkgs.writeShellScript "dev" ''
