@@ -32,10 +32,6 @@ jobs:
         with:
           name: devenv
 
-      - name: Install dependencies
-        run: |
-          nix run .#install
-
       - name: Build project
         env:
           NODE_ENV: production
