@@ -21,21 +21,6 @@
           reproducible development environments.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <button
-            class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            @click="incrementCounter"
-          >
-            Count: {{ count }}
-          </button>
-          <button
-            class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            @click="resetCounter"
-          >
-            Reset Counter
-          </button>
-        </div>
-
         <!-- Color Palette Section -->
         <div class="max-w-4xl mx-auto">
           <ColorPalette />
@@ -48,8 +33,6 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import ColorPalette from '../components/ColorPalette.vue'
-
-const count = ref(0)
 
 // Theme system with 5 themes using tailwindcss-themer
 const themes = [
@@ -90,14 +73,6 @@ const applyTheme = () => {
   if (currentTheme.value.className) {
     document.documentElement.classList.add(currentTheme.value.className)
   }
-}
-
-const incrementCounter = () => {
-  count.value++
-}
-
-const resetCounter = () => {
-  count.value = 0
 }
 
 const toggleTheme = () => {
