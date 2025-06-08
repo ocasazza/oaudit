@@ -8,7 +8,6 @@
     "dev": "vite",
     "build": "rm -rf ./dist && vite build",
     "deploy": "gh-pages -d ./dist -u 'ocasazza <olive.casazza@schrodinger.com>'",
-
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint src --ext .vue,.ts,.js",
@@ -17,10 +16,10 @@
     "format:check": "prettier --check src"
   },
   "dependencies": {
+    "tailwindcss-themer": "^4.1.1",
     "vue": "^3.4.0"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
     "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
@@ -30,6 +29,7 @@
     "autoprefixer": "^10.4.0",
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^9.0.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.0",
     "prettier": "^3.0.0",
     "tailwindcss": "^3.4.0",

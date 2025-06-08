@@ -4,16 +4,11 @@
       <!-- Theme Toggle Button - Fixed Position -->
       <div class="fixed top-6 right-6 z-10">
         <button
-          class="p-3 bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-secondary-200 dark:border-secondary-700"
+          class="p-3 bg-white dark:bg-secondary-800 text-secondary-600 dark:text-secondary-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-secondary-200 dark:border-secondary-700 flex items-center justify-center"
           @click="toggleTheme"
-          :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+          :title="`Current: ${currentTheme.label} - Click to cycle themes`"
         >
-          <svg v-if="!isDark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-          </svg>
-          <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-          </svg>
+          <span class="text-2xl">{{ currentTheme.icon }}</span>
         </button>
       </div>
 
@@ -28,39 +23,21 @@
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <button
-            class="px-6 py-3 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             @click="incrementCounter"
           >
             Count: {{ count }}
           </button>
           <button
-            class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 dark:bg-secondary-500 dark:hover:bg-secondary-600 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             @click="resetCounter"
           >
             Reset Counter
           </button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-          <FeatureCard
-            title="Vue 3"
-            description="Modern Vue.js with Composition API and TypeScript support"
-            icon="⚡"
-          />
-          <FeatureCard
-            title="Nix Flake"
-            description="Reproducible development environment with declarative package management"
-            icon="❄️"
-          />
-          <FeatureCard
-            title="Tailwind CSS"
-            description="Utility-first CSS framework with custom theme configuration"
-            icon="🎨"
-          />
-        </div>
-
         <!-- Color Palette Section -->
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-4xl mx-auto">
           <ColorPalette />
         </div>
       </div>
@@ -70,35 +47,48 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
-import FeatureCard from './components/FeatureCard.vue'
 import ColorPalette from './components/ColorPalette.vue'
 
 const count = ref(0)
-const isDark = ref(false)
 
-// Initialize theme from localStorage or system preference
+// Theme system with 5 themes using tailwindcss-themer
+const themes = [
+  { name: 'default', label: 'Light', icon: '☀️', className: '' },
+  { name: 'dark-theme', label: 'Dark', icon: '🌙', className: 'dark-theme' },
+  { name: 'disco-theme', label: 'Disco', icon: '🕺', className: 'disco-theme' },
+  { name: 'forest-theme', label: 'Forest', icon: '🌲', className: 'forest-theme' },
+  { name: 'pastel-theme', label: 'Pastel', icon: '🌸', className: 'pastel-theme' }
+]
+
+const currentThemeIndex = ref(0)
+const currentTheme = ref(themes[0])
+
+// Initialize theme from localStorage or default to light
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
   if (savedTheme) {
-    isDark.value = savedTheme === 'dark'
-  } else {
-    // Check system preference
-    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const themeIndex = themes.findIndex(theme => theme.name === savedTheme)
+    if (themeIndex !== -1) {
+      currentThemeIndex.value = themeIndex
+      currentTheme.value = themes[themeIndex]
+    }
   }
   applyTheme()
 })
 
 // Watch for theme changes and apply them
-watch(isDark, () => {
+watch(currentTheme, () => {
   applyTheme()
-  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+  localStorage.setItem('theme', currentTheme.value.name)
 })
 
 const applyTheme = () => {
-  if (isDark.value) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
+  // Remove all theme classes
+  document.documentElement.classList.remove('dark-theme', 'disco-theme', 'forest-theme', 'pastel-theme')
+
+  // Add the current theme class (if not default)
+  if (currentTheme.value.className) {
+    document.documentElement.classList.add(currentTheme.value.className)
   }
 }
 
@@ -111,8 +101,11 @@ const resetCounter = () => {
 }
 
 const toggleTheme = () => {
-  isDark.value = !isDark.value
+  // Cycle to next theme
+  currentThemeIndex.value = (currentThemeIndex.value + 1) % themes.length
+  currentTheme.value = themes[currentThemeIndex.value]
 }
+
 </script>
 
 <style scoped>
