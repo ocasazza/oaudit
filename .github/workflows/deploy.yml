@@ -32,11 +32,13 @@ jobs:
         with:
           name: devenv
 
-      - uses: HatsuneMiku3939/direnv-action@v1
-        with:
-          direnvVersion: 2.32.1
+      - name: Install dependencies
+        run: |
+          nix run .#install
 
       - name: Build project
+        env:
+          NODE_ENV: production
         run: |
           nix run .#build
 

@@ -165,7 +165,8 @@ The project is configured for automatic deployment to GitHub Pages:
 
 The GitHub Actions workflow:
 - Uses Nix for reproducible builds
-- Builds the project with `nix run .#build`
+- Installs npm dependencies with `nix run .#install`
+- Builds the project with `nix run .#build` (with production base path)
 - Deploys to GitHub Pages
 
 ### Manual Deployment
@@ -193,6 +194,10 @@ The `flake.nix` defines:
 - **Port 4173** for preview server
 - **Path aliases** (`@/` points to `src/`)
 - **Source maps** enabled for production builds
+- **Base path** automatically configured:
+  - Development: `/` (root)
+  - Production: `/oudit/` (GitHub Pages)
+  - Override with `VITE_BASE_PATH` environment variable
 
 ### TypeScript
 
