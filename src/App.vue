@@ -1,8 +1,19 @@
 <template>
-  <div id="app" class="bg-gradient-to-br from-primary-50 to-secondary-50 transition-colors duration-50">
-    <NavBar />
-    <Breadcrumbs />
-    <RouterView />
+  <div id="app" class="h-screen w-full flex flex-col overflow-hidden">
+    <!-- Fixed Header -->
+    <header class="flex-shrink-0">
+      <NavBar />
+    </header>
+
+    <!-- Scrolling Content Area -->
+    <main class="flex-1 overflow-y-auto">
+      <RouterView />
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="flex-shrink-0">
+      <Breadcrumbs />
+    </footer>
   </div>
 </template>
 
@@ -13,4 +24,13 @@ import Breadcrumbs from './components/Navigation/Breadcrumbs.vue'
 
 <style>
 /* Global app styles can go here */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100vh;
+}
 </style>

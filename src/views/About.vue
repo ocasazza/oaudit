@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="bg-gradient-to-br from-primary-50 to-secondary-100 transition-colors duration-300 min-h-full">
     <div class="container mx-auto px-4 py-8">
       <div class="text-center">
         <h1 class="text-5xl font-bold text-primary-900 mb-6 transition-colors duration-300">

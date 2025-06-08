@@ -2,7 +2,7 @@
   <RouterLink
     :to="route.path"
     :class="[
-      'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200',
+      'flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors duration-200',
       isMobile ? 'w-full justify-start' : '',
       isActive
         ? 'bg-primary-100 text-primary-900 border border-primary-200'

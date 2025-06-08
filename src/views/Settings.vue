@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="bg-gradient-to-br from-primary-50 to-secondary-100 transition-colors duration-300 min-h-full">
     <div class="container mx-auto px-4 py-8">
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-primary-900 mb-4 transition-colors duration-300">
@@ -13,7 +13,7 @@
       <div class="max-w-2xl mx-auto space-y-6">
         <!-- Theme Settings -->
         <div
-          class="bg-secondary-50/80 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-secondary-200 transition-colors duration-300">
+          class="bg-secondary-50/80 backdrop-blur-sm p-6 shadow-lg border border-secondary-200 transition-colors duration-300">
           <div class="flex items-center mb-6">
             <span class="text-2xl mr-3">🎨</span>
             <h2 class="text-2xl font-bold text-primary-900">Appearance</h2>
@@ -24,7 +24,7 @@
 
         <!-- API Configuration -->
         <div
-          class="bg-secondary-50/80 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-secondary-200 transition-colors duration-300">
+          class="bg-secondary-50/80 backdrop-blur-sm p-6 shadow-lg border border-secondary-200 transition-colors duration-300">
           <div class="flex items-center mb-6">
             <span class="text-2xl mr-3">🔑</span>
             <h2 class="text-2xl font-bold text-primary-900">API Configuration</h2>
@@ -38,7 +38,7 @@
               </label>
               <div class="relative">
                 <input v-model="secretToken" :type="showToken ? 'text' : 'password'"
-                  class="w-full px-3 py-2 pr-10 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
+                  class="w-full px-3 py-2 pr-10 border border-secondary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
                   placeholder="Enter your secret token" />
                 <button @click="toggleTokenVisibility"
                   class="absolute inset-y-0 right-0 pr-3 flex items-center text-secondary-400 hover:text-secondary-600 transition-colors duration-200"
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Save Status -->
-            <div v-if="saveStatus" class="p-3 rounded-md" :class="saveStatusClass">
+            <div v-if="saveStatus" class="p-3" :class="saveStatusClass">
               <div class="flex items-center">
                 <span class="text-lg mr-2">{{ saveStatus.icon }}</span>
                 <span class="text-sm font-medium">{{ saveStatus.message }}</span>
@@ -66,7 +66,7 @@
                 Reset
               </button>
               <button @click="saveToken" :disabled="!secretToken.trim()"
-                class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 disabled:bg-secondary-300 disabled:cursor-not-allowed transition-colors duration-200">
+                class="px-6 py-2 bg-primary-600 text-white hover:bg-primary-700 disabled:bg-secondary-300 disabled:cursor-not-allowed transition-colors duration-200">
                 Save Token
               </button>
             </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-50 rounded-xl shadow-lg p-6 border border-secondary-200 transition-all duration-300">
+  <div class="bg-primary-50 shadow-lg p-6 border border-secondary-200 transition-all duration-300">
     <h3 class="text-2xl font-semibold text-primary-900 mb-6 text-center transition-colors duration-300">
       🎨 Color Palette
     </h3>
@@ -67,7 +67,7 @@ const palleteNumbers = [
 ]
 
 function getClass(n: string, colorType: string) {
-  return `bg-${colorType}-${n} h-4 w-4`;
+  return `bg-${colorType}-${n} h-4 w-4 border border-highlight-50`;
 }
 
 </script>
