@@ -20,6 +20,10 @@
           </div>
 
           <ThemeSelector />
+
+          <div class="max-w-4xl mx-auto">
+            <ColorPalette />
+          </div>
         </div>
 
         <!-- API Configuration -->
@@ -47,7 +51,8 @@
                 </button>
               </div>
               <p class="mt-2 text-sm text-secondary-600">
-                This token will be used for API authentication. It's stored in memory only and will be cleared when you refresh or close the page.
+                This token will be used for API authentication. It's stored in memory only and will be cleared when you
+                refresh or close the page.
               </p>
             </div>
 
@@ -80,6 +85,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import ThemeSelector from '../components/ThemeSelector.vue'
+import ColorPalette from '../components/ColorPalette.vue'
 
 const secretToken = ref('')
 const showToken = ref(false)
