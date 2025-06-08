@@ -54,22 +54,16 @@ jobs:
         with:
           path: './dist'
 
-      - name: Deploy artifact
+
+  deploy:
+
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/ocasazza/oaudit.git
           npm run deploy
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
-
-
-  # deploy:
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   if: github.ref == 'refs/heads/main'
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
