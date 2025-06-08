@@ -47,6 +47,7 @@
           build = {
             type = "app";
             program = "${pkgs.writeShellScript "build" ''
+              npm install --include=dev --quiet
               export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
               npm run build
             ''}";
