@@ -70,7 +70,7 @@ onMounted(() => {
       selectedTheme.value = savedTheme
     }
   }
-  applyTheme()
+  // Theme is already applied in main.ts, just ensure it's in sync
 })
 
 // Watch for theme changes and apply them
