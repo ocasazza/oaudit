@@ -7,7 +7,7 @@
 
     <!-- Scrolling Content Area -->
     <main class="flex-1 overflow-y-auto">
-      <RouterView />
+      <NuxtPage />
     </main>
 
     <!-- Fixed Footer -->
@@ -18,8 +18,11 @@
 </template>
 
 <script setup lang="ts">
+// Import navigation components explicitly
 import NavBar from './components/Navigation/NavBar.vue'
 import Breadcrumbs from './components/Navigation/Breadcrumbs.vue'
+
+// Theme initialization is handled by the theme.client.ts plugin
 </script>
 
 <style>

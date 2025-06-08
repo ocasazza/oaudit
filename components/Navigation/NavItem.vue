@@ -1,5 +1,5 @@
 <template>
-  <RouterLink
+  <NuxtLink
     :to="route.path"
     :class="[
       'flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors duration-200',
@@ -12,16 +12,26 @@
   >
     <span v-if="route.meta?.icon" class="text-lg">{{ route.meta.icon }}</span>
     <span>{{ route.meta?.title || route.name }}</span>
-  </RouterLink>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import type { RouteRecordNormalized } from 'vue-router'
+
+interface RouteItem {
+  name: string
+  path: string
+  meta?: {
+    title?: string
+    breadcrumb?: string
+    showInNav?: boolean
+    icon?: string
+    order?: number
+  }
+}
 
 interface Props {
-  route: RouteRecordNormalized
+  route: RouteItem
   isMobile?: boolean
 }
 

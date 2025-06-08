@@ -5,10 +5,10 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo/Brand -->
         <div class="flex items-center space-x-4">
-          <RouterLink to="/"
-            class="text-xl font-bold text-primary-900 hover:text-primary-700 transition-colors duration-200">
-            Oudit
-          </RouterLink>
+          <NuxtLink to="/"
+            class="text-xl font-bold text-primary-700 hover:text-primary-700 transition-colors duration-200">
+            oudit
+          </NuxtLink>
         </div>
 
         <!-- Desktop Navigation -->
@@ -42,19 +42,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 import NavItem from './NavItem.vue'
 
-const router = useRouter()
 const isMobileMenuOpen = ref(false)
 
-// Get routes that should show in navigation
-const navigationRoutes = computed(() => {
-  return router.getRoutes()
-    .filter(route => route.meta?.showInNav)
-    .sort((a, b) => (a.meta?.order || 0) - (b.meta?.order || 0))
-})
+// Define navigation routes manually for Nuxt
+const navigationRoutes = [
+  {
+    name: 'home',
+    path: '/',
+    meta: {
+      title: 'Home',
+      breadcrumb: 'Home',
+      showInNav: true,
+      icon: '🏠',
+      order: 1
+    }
+  },
+  {
+    name: 'about',
+    path: '/about',
+    meta: {
+      title: 'About',
+      breadcrumb: 'About',
+      showInNav: true,
+      icon: 'ℹ️',
+      order: 2
+    }
+  },
+  {
+    name: 'settings',
+    path: '/settings',
+    meta: {
+      title: 'Settings',
+      breadcrumb: 'Settings',
+      showInNav: true,
+      icon: '⚙️',
+      order: 3
+    }
+  }
+]
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value

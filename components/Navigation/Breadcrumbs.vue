@@ -14,10 +14,10 @@
           <!-- Breadcrumb Item -->
           <div class="flex items-center space-x-1">
             <span v-if="crumb.icon" class="text-base">{{ crumb.icon }}</span>
-            <RouterLink v-if="index < breadcrumbs.length - 1" :to="crumb.path"
+            <NuxtLink v-if="index < breadcrumbs.length - 1" :to="crumb.path"
               class="text-secondary-600 hover:text-primary-600 transition-colors duration-200">
               {{ crumb.title }}
-            </RouterLink>
+            </NuxtLink>
             <span v-else class="text-primary-900 font-medium">
               {{ crumb.title }}
             </span>
@@ -30,7 +30,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 
 interface Breadcrumb {
   title: string
@@ -39,7 +38,13 @@ interface Breadcrumb {
 }
 
 const route = useRoute()
-const router = useRouter()
+
+// Define route metadata for breadcrumbs
+const routeMetadata = {
+  '/': { title: 'Home', icon: '🏠' },
+  '/about': { title: 'About', icon: 'ℹ️' },
+  '/settings': { title: 'Settings', icon: '⚙️' }
+}
 
 const breadcrumbs = computed(() => {
   const crumbs: Breadcrumb[] = []
@@ -51,27 +56,24 @@ const breadcrumbs = computed(() => {
     icon: '🏠'
   })
 
-  // Get all route segments
-  const pathSegments = route.path.split('/').filter(segment => segment)
+  // Get current route path
+  const currentPath = route.path
 
-  // Build breadcrumbs from route segments
-  let currentPath = ''
-  for (const segment of pathSegments) {
-    currentPath += `/${segment}`
-
-    // Find matching route
-    const matchedRoute = router.getRoutes().find(r => r.path === currentPath)
-
-    if (matchedRoute && matchedRoute.meta) {
+  // If not on home page, add current page to breadcrumbs
+  if (currentPath !== '/') {
+    const metadata = routeMetadata[currentPath as keyof typeof routeMetadata]
+    if (metadata) {
       crumbs.push({
-        title: matchedRoute.meta.breadcrumb || matchedRoute.meta.title || segment,
+        title: metadata.title,
         path: currentPath,
-        icon: matchedRoute.meta.icon
+        icon: metadata.icon
       })
     } else {
-      // Fallback for dynamic routes or unmatched segments
+      // Fallback for unknown routes
+      const segments = currentPath.split('/').filter(segment => segment)
+      const lastSegment = segments[segments.length - 1]
       crumbs.push({
-        title: segment.charAt(0).toUpperCase() + segment.slice(1),
+        title: lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1),
         path: currentPath
       })
     }
