@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 py-8">
 
       <div class="max-w-2xl mx-auto space-y-6">
-        <div class="t mb-8">
+        <div class="text-center mb-8">
           <h1 class="text-4xl font-bold text-primary-900 mb-4 transition-colors duration-300">
             Settings
           </h1>
@@ -83,6 +83,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
 const secretToken = ref('')
 const showToken = ref(false)
 const saveStatus = ref<{ message: string; type: 'success' | 'error'; icon: string } | null>(null)

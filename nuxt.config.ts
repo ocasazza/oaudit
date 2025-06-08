@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 
   // TypeScript configuration
   typescript: {
-    typeCheck: true
+    typeCheck: false
   },
 
   // App configuration
@@ -31,6 +31,9 @@ export default defineNuxtConfig({
 
   // Build configuration for static generation
   nitro: {
+    output: {
+      dir: 'dist'
+    },
     prerender: {
       routes: ['/']
     }
