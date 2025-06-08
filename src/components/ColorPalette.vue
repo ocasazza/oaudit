@@ -3,8 +3,6 @@
     <h3 class="text-2xl font-semibold text-primary-900 mb-6 text-center transition-colors duration-300">
       🎨 Color Palette
     </h3>
-
-    <!-- Simple Color Grid -->
     <div class="space-y-4">
       <!-- Primary Colors -->
       <div>
@@ -15,7 +13,6 @@
           </div>
         </div>
       </div>
-
       <!-- Secondary Colors -->
       <div>
         <h4 class="text-sm font-medium text-secondary-700">Secondary</h4>
@@ -25,7 +22,6 @@
           </div>
         </div>
       </div>
-
       <!-- Tertiary Colors -->
       <div>
         <h4 class="text-sm font-medium text-secondary-700">Tertiary</h4>
@@ -35,7 +31,6 @@
           </div>
         </div>
       </div>
-
       <!-- Highlight Colors -->
       <div>
         <h4 class="text-sm font-medium text-secondary-700">Highlight</h4>
@@ -46,14 +41,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Usage Note -->
-    <div class="mt-6 p-4 bg-secondary-100 rounded-lg border border-secondary-300 transition-colors duration-300">
-      <p class="text-sm text-secondary-700 text-center">
-        Same Tailwind classes work across all themes - colors adapt automatically!
-      </p>
-    </div>
-
   </div>
 </template>
 
