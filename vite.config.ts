@@ -5,7 +5,7 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: process.env.VITE_BASE_PATH || (process.env.NODE_ENV === 'production' ? '/oudit/' : '/'),
+  base: process.env.VITE_BASE_PATH || (process.env.NODE_ENV === 'production' ? '/oaudit/' : '/'),
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

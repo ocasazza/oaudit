@@ -6,8 +6,9 @@
   "description": "Vue.js + TypeScript project managed with Nix",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && vite build",
-    "deploy": "gh-pages -d dist",
+    "build": "rm -rf ./dist && vite build",
+    "deploy": "gh-pages -d ./dist -u 'ocasazza <olive.casazza@schrodinger.com>'",
+
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint src --ext .vue,.ts,.js",
