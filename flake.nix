@@ -33,58 +33,5 @@
             npm install --include=dev --quiet
           '';
         };
-
-        apps = {
-
-          dev = {
-            type = "app";
-            program = "${pkgs.writeShellScript "dev" ''
-              export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
-              npm run dev
-            ''}";
-          };
-
-          build = {
-            type = "app";
-            program = "${pkgs.writeShellScript "build" ''
-              export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
-              npm run build
-            ''}";
-          };
-
-          preview = {
-            type = "app";
-            program = "${pkgs.writeShellScript "preview" ''
-              npm install --include=dev --quiet
-              export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
-              npm run preview
-            ''}";
-          };
-
-          check = {
-            type = "app";
-            program = "${pkgs.writeShellScript "check" ''
-              npm install --include=dev --quiet
-              export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
-              echo "🧹 Linting..."
-              npm run lint
-              echo "💅 Format checking..."
-              npm run format:check
-              echo "✅ All checks passed!"
-            ''}";
-          };
-
-          format = {
-            type = "app";
-            program = "${pkgs.writeShellScript "format" ''
-              npm install --include=dev --quiet
-              export PATH=${pkgs.lib.makeBinPath buildInputs}:$PATH
-              echo "💅 Formatting code..."
-              npm run format
-              npm run lint:fix
-              echo "✅ Code formatted!"
-            ''}";
-          };
-        };
       });
 }

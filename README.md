@@ -178,6 +178,7 @@ The GitHub Actions workflow:
 - Uses Nix for reproducible builds
 - Installs npm dependencies with `nix develop -c npm install`
 - Builds the project with `nix develop -c npm run build` (with production base path)
+- Includes `.nojekyll` file to prevent Jekyll processing
 - Deploys to GitHub Pages
 
 ### Manual Deployment
@@ -195,9 +196,9 @@ nix develop -c npm run build
 ### Nix Flake
 
 The `flake.nix` defines:
-- **Development shell** with all required tools
-- **Apps** for common development tasks
+- **Development shell** with all required tools (Node.js, npm, TypeScript, ESLint, Prettier)
 - **Reproducible environment** across all machines
+- **Consistent tooling** via `nix develop -c` commands
 
 ### Vite Configuration
 
