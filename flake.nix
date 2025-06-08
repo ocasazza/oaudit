@@ -31,6 +31,7 @@
 
           shellHook = ''
             npm install --quiet
+            npm install --quiet --dev
           '';
         };
 
