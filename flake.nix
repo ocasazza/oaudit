@@ -30,8 +30,7 @@
           inherit buildInputs;
 
           shellHook = ''
-            npm install --quiet
-            npm install --quiet --dev
+            npm install --include=dev --quiet
           '';
         };
 
