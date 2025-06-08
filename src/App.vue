@@ -1,13 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-gradient-to-br from-primary-50 to-secondary-50 transition-colors duration-50">
+    <NavBar />
+    <Breadcrumbs />
     <RouterView />
   </div>
 </template>
 
 <script setup lang="ts">
-// Empty app component - all content is now in views
+import NavBar from './components/Navigation/NavBar.vue'
+import Breadcrumbs from './components/Navigation/Breadcrumbs.vue'
 </script>
 
-<style scoped>
+<style>
 /* Global app styles can go here */
 </style>

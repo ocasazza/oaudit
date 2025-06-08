@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white dark:bg-secondary-800 rounded-xl shadow-lg dark:shadow-2xl p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border border-secondary-100 dark:border-secondary-700 transform hover:-translate-y-1"
+    class="bg-white dark:bg-primary-800 rounded-xl shadow-lg dark:shadow-2xl p-6 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border border-secondary-100 dark:border-secondary-700 transform hover:-translate-y-1"
   >
     <div class="text-4xl mb-4 text-center filter drop-shadow-sm">
       {{ icon }}

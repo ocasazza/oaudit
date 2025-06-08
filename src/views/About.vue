@@ -1,26 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-100 transition-colors duration-300">
-    <div class="container mx-auto px-4 py-16">
-      <!-- Theme Toggle Button - Fixed Position -->
-      <div class="fixed top-6 right-6 z-10">
-        <button
-          class="p-3 bg-secondary-50 text-secondary-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-secondary-200 flex items-center justify-center"
-          @click="toggleTheme"
-          :title="`Current: ${currentTheme.label} - Click to cycle themes`"
-        >
-          <span class="text-2xl">{{ currentTheme.icon }}</span>
-        </button>
-      </div>
-
+  <div class="min-h-screen">
+    <div class="container mx-auto px-4 py-8">
       <div class="text-center">
         <h1 class="text-5xl font-bold text-primary-900 mb-6 transition-colors duration-300">
           About Oudit
         </h1>
         <p class="text-xl text-secondary-600 mb-8 max-w-2xl mx-auto transition-colors duration-300">
-          A modern Vue.js + TypeScript application powered by Nix flake for
-          reproducible development environments.
+          A vue.js application used to expose the oaudit cli tool. This UI allows a useRoute audit okta applications and users.
         </p>
-
         <!-- Color Palette Section -->
         <div class="max-w-4xl mx-auto">
           <ColorPalette />
@@ -31,56 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
 import ColorPalette from '../components/ColorPalette.vue'
-
-// Theme system with 5 themes using tailwindcss-themer
-const themes = [
-  { name: 'default', label: 'Light', icon: '☀️', className: '' },
-  { name: 'dark-theme', label: 'Dark', icon: '🌙', className: 'dark-theme' },
-  { name: 'disco-theme', label: 'Disco', icon: '🕺', className: 'disco-theme' },
-  { name: 'forest-theme', label: 'Forest', icon: '🌲', className: 'forest-theme' },
-  { name: 'pastel-theme', label: 'Pastel', icon: '🌸', className: 'pastel-theme' }
-]
-
-const currentThemeIndex = ref(0)
-const currentTheme = ref(themes[0])
-
-// Initialize theme from localStorage or default to light
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme) {
-    const themeIndex = themes.findIndex(theme => theme.name === savedTheme)
-    if (themeIndex !== -1) {
-      currentThemeIndex.value = themeIndex
-      currentTheme.value = themes[themeIndex]
-    }
-  }
-  applyTheme()
-})
-
-// Watch for theme changes and apply them
-watch(currentTheme, () => {
-  applyTheme()
-  localStorage.setItem('theme', currentTheme.value.name)
-})
-
-const applyTheme = () => {
-  // Remove all theme classes
-  document.documentElement.classList.remove('dark-theme', 'disco-theme', 'forest-theme', 'pastel-theme')
-
-  // Add the current theme class (if not default)
-  if (currentTheme.value.className) {
-    document.documentElement.classList.add(currentTheme.value.className)
-  }
-}
-
-const toggleTheme = () => {
-  // Cycle to next theme
-  currentThemeIndex.value = (currentThemeIndex.value + 1) % themes.length
-  currentTheme.value = themes[currentThemeIndex.value]
-}
-
 </script>
 
 <style scoped>
