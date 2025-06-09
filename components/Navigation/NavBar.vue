@@ -53,22 +53,55 @@ const navigationRoutes = [
     name: 'home',
     path: '/',
     meta: {
-      title: 'home',
-      breadcrumb: 'home',
+      title: 'dashboard',
+      breadcrumb: 'dashboard',
       showInNav: true,
-      icon: '🏠',
+      icon: '📊',
       order: 1
     }
   },
   {
-    name: 'about',
-    path: '/about',
+    name: 'users',
+    path: '/users',
     meta: {
-      title: 'about',
-      breadcrumb: 'about',
+      title: 'users',
+      breadcrumb: 'users',
       showInNav: true,
-      icon: 'ℹ️',
+      icon: '👤',
       order: 2
+    }
+  },
+  {
+    name: 'applications',
+    path: '/applications',
+    meta: {
+      title: 'applications',
+      breadcrumb: 'applications',
+      showInNav: true,
+      icon: '📱',
+      order: 3
+    }
+  },
+  {
+    name: 'groups',
+    path: '/groups',
+    meta: {
+      title: 'groups',
+      breadcrumb: 'groups',
+      showInNav: true,
+      icon: '👥',
+      order: 4
+    }
+  },
+  {
+    name: 'graph',
+    path: '/graph',
+    meta: {
+      title: 'graph View',
+      breadcrumb: 'graph View',
+      showInNav: true,
+      icon: '🔗',
+      order: 5
     }
   },
   {
@@ -79,7 +112,7 @@ const navigationRoutes = [
       breadcrumb: 'settings',
       showInNav: true,
       icon: '⚙️',
-      order: 3
+      order: 6
     }
   }
 ]
